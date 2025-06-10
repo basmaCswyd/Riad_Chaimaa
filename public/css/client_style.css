@@ -1,0 +1,418 @@
+/* General Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: #fdfcfb; /* Very light cream/off-white */
+    color: #4a4a4a;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+a {
+    color: #8c6e4f; /* Muted gold/brown for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #604933; /* Darker gold/brown */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+    flex-grow: 1;
+}
+
+/* --- Client Header --- */
+.client-header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.client-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.client-header .logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+.client-header .logo h1 a { color: #333; }
+.client-header .logo h1 a:hover { color: #8c6e4f; }
+
+.client-header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.client-header nav ul li a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 0;
+    position: relative;
+}
+
+.client-header nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #8c6e4f;
+    transition: width 0.3s ease;
+}
+.client-header nav ul li a:hover::after,
+.client-header nav ul li a.active::after {
+    width: 100%;
+}
+.client-header .btn-reserve {
+    margin-left: 10px;
+}
+
+
+/* --- Page Titles --- */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #383838;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #8c6e4f;
+}
+
+/* --- Forms (Client Styled) --- */
+.form-elegant {
+    background-color: #fff;
+    padding: 35px 40px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+    max-width: 550px;
+    margin: 20px auto;
+}
+.form-elegant h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.9rem;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: #fdfdfd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #a08569; /* Softer focus color */
+    box-shadow: 0 0 0 0.15rem rgba(140, 110, 79, 0.2);
+}
+
+/* --- Buttons (Client Styled) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #8c6e4f; /* Muted gold/brown */
+    border: 1px solid #8c6e4f;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background-color: #7a5f43;
+    border-color: #7a5f43;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.btn-secondary {
+    background-color: #f1f1f1;
+    color: #555;
+    border-color: #ddd;
+}
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+    color: #333;
+}
+.btn-full-width {
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+.form-actions {
+    margin-top: 25px;
+    text-align: center;
+}
+.form-actions p {
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* --- Side Navigation (Client Connected) --- */
+.sidebar-marker {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 100px;
+    background-color: rgba(140, 110, 79, 0.2);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 1010;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+.sidebar-nav {
+    position: fixed;
+    left: -280px; /* Initially hidden */
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 1020;
+    transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding-top: 80px; /* Space for logo/header */
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-nav.is-visible {
+    left: 0;
+}
+.sidebar-nav .sidebar-header {
+    padding: 0 25px 20px 25px;
+    border-bottom: 1px solid #eee;
+}
+.sidebar-nav .sidebar-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+}
+.sidebar-nav ul {
+    list-style: none;
+    padding: 20px 0;
+}
+.sidebar-nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4a4a4a;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sidebar-nav ul li a i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    color: #8c6e4f;
+}
+.sidebar-nav ul li a:hover {
+    background-color: #fdf8f3;
+    color: #604933;
+}
+
+/* --- Notifications & Pop-ups --- */
+.flash-message {
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+    text-align: center;
+    font-weight: 500;
+}
+.flash-message.success {
+    background-color: #e9f5e9; /* Light green */
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+}
+.flash-message.error {
+    background-color: #ffebee; /* Light red */
+    color: #b71c1c;
+    border: 1px solid #ef9a9a;
+}
+.flash-message.info {
+    background-color: #e3f2fd; /* Light blue */
+    color: #0d47a1;
+    border: 1px solid #90caf9;
+}
+
+
+/* --- Client Footer --- */
+.client-footer {
+    background-color: #333;
+    color: #bbb;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+.client-footer .container { padding: 0; }
+.client-footer p { margin-bottom: 10px; }
+.client-footer .social-links a {
+    color: #bbb;
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+.client-footer .social-links a:hover { color: #fff; }
+
+/* --- Styles pour la Page Menu (précédemment dans home.blade.php) --- */
+.menu-search-bar {
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 50px;
+    padding: 8px;
+    background: #fff;
+}
+.menu-search-bar input[type="search"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: transparent;
+}
+.menu-search-bar .btn {
+    border-radius: 50px;
+    box-shadow: none;
+}
+.menu-category h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    text-align: center;
+    margin: 60px 0 30px 0;
+    color: #333;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+.menu-item-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.menu-item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.menu-item-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.item-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+.menu-item-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.menu-item-content h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.menu-item-content .description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+.menu-item-content .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #8c6e4f;
+    margin-top: auto;
+}
+/* --- Style pour l'indicateur de notification --- */
+.notification-dot {
+    position: absolute;
+    top: 12px; /* Ajuste la position verticale */
+    right: 20px; /* Ajuste la position horizontale */
+    width: 10px;
+    height: 10px;
+    background-color: #d9534f; /* Un rouge vif */
+    border-radius: 50%;
+    border: 2px solid #fff; /* Pour le faire ressortir sur le fond du lien */
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.7);
+}
