@@ -24,9 +24,9 @@
             </li>
             <li>
                 <a href="{{ route('admin.menu.index') }}" class="{{ request()->routeIs('admin.menu.*') ? 'active' : '' }}">
-                    <i class="fas fa-utensils fa-fw"></i>
-                    <span>Gérer les Plats</span>
-                </a>
+        <i class="fas fa-utensils fa-fw"></i>
+        <span>Gérer les Plats</span>
+    </a>
             </li>
             <li>
                 <a href="{{ route('admin.tables.index') }}" class="{{ request()->routeIs('admin.tables.*') ? 'active' : '' }}">

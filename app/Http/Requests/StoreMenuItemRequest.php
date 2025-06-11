@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreMenuItemRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreMenuItemRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,12 @@ class StoreMenuItemRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+         return [
+            'name'        => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'min:10'],
+            'price'       => ['required', 'numeric', 'min:0'],
+            'category'    => ['required', 'string', Rule::in(['Entrée', 'Plat Principal', 'Dessert', 'Boisson', 'Menu Enfant'])],
+            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ];
     }
 }
