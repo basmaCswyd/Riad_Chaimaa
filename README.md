@@ -7,55 +7,161 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Riad - Système de Réservation de Restaurant
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Riad Logo](public/placeholders/plat_placeholder.jpg) 
+<!-- Remplace plat_placeholder.jpg par le chemin vers un vrai logo si tu en as un -->
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Riad** est une application web complète développée avec Laravel 11, conçue pour gérer les réservations et le menu d'un restaurant. Elle offre une interface élégante pour les clients et un tableau de bord puissant pour les administrateurs.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Table des Matières
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- [Fonctionnalités Clés](#fonctionnalités-clés)
+  - [Espace Client](#espace-client)
+  - [Espace Administrateur](#espace-administrateur)
+- [Technologies Utilisées](#technologies-utilisées)
+- [Prérequis](#prérequis)
+- [Installation et Configuration](#installation-et-configuration)
+- [Identifiants de Test](#identifiants-de-test)
+- [Structure des Dossiers Clés](#structure-des-dossiers-clés)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Fonctionnalités Clés
 
-## Laravel Sponsors
+### Espace Client
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Consultation du Menu :** Visualisation des plats groupés par catégorie, avec images, descriptions et prix.
+- **Recherche de Plats :** Barre de recherche dynamique pour trouver des plats par nom ou ingrédient.
+- **Système d'Authentification :** Inscription avec champs personnalisés (nom, prénom, CIN, etc.) et connexion sécurisée via une modale interactive, sans quitter la page principale.
+- **Processus de Réservation :**
+    1. Le client choisit une date, une heure et le nombre de convives.
+    2. Le système affiche les tables **réellement disponibles** pour ce créneau.
+    3. Le client sélectionne la table de son choix et envoie une demande.
+    4. La réservation est mise en attente de validation par l'administrateur.
+- **Espace Personnel (Sidebar) :**
+    - **Gestion de Profil :** Mise à jour des informations personnelles.
+    - **Mes Réservations :** Suivi du statut des réservations (en attente, confirmée, refusée).
+    - **Téléchargement de Billet :** Possibilité de télécharger un billet PDF personnalisé pour les réservations confirmées.
+    - **Boîte de Messagerie :** Système de ticketing interne pour envoyer des feedbacks, poser des questions et recevoir des réponses de l'administration.
+- **Notifications :** Indicateur visuel (point rouge) pour les nouvelles réponses non lues dans la boîte de messagerie.
 
-### Premium Partners
+### Espace Administrateur
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Tableau de Bord :** Vue d'ensemble avec des statistiques clés (réservations en attente, clients, etc.) et un accès rapide aux dernières demandes.
+- **Gestion des Réservations :**
+    - Visualisation de toutes les demandes de réservation.
+    - Validation en un clic des tables suggérées par les clients.
+    - Possibilité de refuser une demande et d'être redirigé pour envoyer un message d'explication.
+- **Gestion du Menu (CRUD complet) :**
+    - Ajout, modification et suppression de plats.
+    - Upload d'images personnalisées pour chaque plat.
+- **Gestion des Tables :** Vue d'ensemble du planning des tables pour n'importe quelle date, affichant les tables libres et celles déjà réservées.
+- **Boîte de Messagerie :** Consultation des feedbacks des clients et possibilité d'y répondre directement.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Technologies Utilisées
 
-## Code of Conduct
+- **Framework :** Laravel 11
+- **Frontend :** HTML5, CSS3, JavaScript (vanilla)
+- **Authentification :** Laravel Breeze (personnalisé)
+- **Base de Données :** MySQL (configurable dans `.env`)
+- **Génération PDF :** `barryvdh/laravel-dompdf`
+- **Dépendances :** PHP 8.2+, Composer, Node.js
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Prérequis
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- PHP >= 8.2
+- Composer
+- Node.js & npm
+- Un serveur de base de données (ex: MySQL, MariaDB)
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Installation et Configuration
+
+Suivez ces étapes pour mettre en place le projet sur votre machine locale.
+
+1.  **Cloner le projet (si hébergé sur Git) :**
+    ```bash
+    git clone https://votre-repository/riad-reservation-system.git
+    cd riad-reservation-system
+    ```
+
+2.  **Installer les dépendances PHP :**
+    ```bash
+    composer install
+    ```
+
+3.  **Installer les dépendances JavaScript :**
+    ```bash
+    npm install
+    ```
+
+4.  **Configurer l'environnement :**
+    - Copiez le fichier d'exemple `.env.example` en `.env` : `cp .env.example .env`
+    - Générez la clé d'application :
+      ```bash
+      php artisan key:generate
+      ```
+    - Configurez vos informations de base de données dans le fichier `.env` :
+      ```env
+      DB_CONNECTION=mysql
+      DB_HOST=127.0.0.1
+      DB_PORT=3306
+      DB_DATABASE=riad_db
+      DB_USERNAME=root
+      DB_PASSWORD=
+      ```
+
+5.  **Créer le lien de stockage :**
+    Cette commande rend les images uploadées accessibles publiquement.
+    ```bash
+    php artisan storage:link
+    ```
+
+6.  **Lancer les migrations et les seeders :**
+    Cette commande va créer toutes les tables et les peupler avec les données initiales (admin, plats, tables).
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+
+7.  **Lancer les serveurs :**
+    - Lancez le serveur de développement Laravel :
+      ```bash
+      php artisan serve
+      ```
+    - (Optionnel, si vous utilisez Vite) Dans un autre terminal, lancez le serveur Vite :
+      ```bash
+      npm run dev
+      ```
+
+L'application est maintenant accessible à l'adresse `http://127.0.0.1:8000`.
+
+---
+
+## Identifiants de Test
+
+Après avoir lancé les seeders, vous pouvez utiliser les identifiants suivants pour tester l'application :
+
+-   **Rôle :** Administrateur
+-   **Email :** `admin@gmail.com`
+-   **Mot de passe :** `admin`
+
+Pour un compte client, vous pouvez en créer un via le formulaire d'inscription.
+
+---
+
+## Structure des Dossiers Clés
+
+-   `app/Http/Controllers/` : Contient la logique métier (séparée en `Admin` et `Client`).
+-   `app/Models/` : Contient les modèles Eloquent pour l'interaction avec la base de données.
+-   `database/migrations/` : Contient la structure des tables de la base de données.
+-   `database/seeders/` : Contient les données initiales pour le développement.
+-   `resources/views/` : Contient toutes les vues Blade (séparées en `admin`, `client`, `layouts`, `partials`, etc.).
+-   `routes/web.php` : Définit toutes les routes de l'application.
+-   `public/css/` : Contient les fichiers CSS personnalisés.
